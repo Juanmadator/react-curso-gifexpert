@@ -18,6 +18,7 @@ export const AddCategory = ({ onNewCategory }) => {
     }
     //reiniciamos el valor del input
     setInputValue("");
+    onNewCategory(inputValue.trim());
   };
 
   return (
