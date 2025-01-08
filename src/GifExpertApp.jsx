@@ -9,7 +9,7 @@ export const GifExpertApp = () => {
     //si la categoria no existe la metemos en el array
     if (categories.includes(newCategory)) return;
 
-    setCategories((categories) => [...categories, newCategory]);
+    setCategories((categories) => [newCategory,...categories ]);
 
   };
 
