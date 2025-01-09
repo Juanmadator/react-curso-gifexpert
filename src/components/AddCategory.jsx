@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
@@ -12,17 +13,16 @@ export const AddCategory = ({ onNewCategory }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if(inputValue.trim().length>0){
-        // setCategories((categories) => [ ...categories,inputValue]);
-        onNewCategory(inputValue.trim())
-    }
-    //reiniciamos el valor del input
+    if(inputValue.trim().length<=1) return;
+
     setInputValue("");
     onNewCategory(inputValue.trim());
+    
   };
 
   return (
-    <form onSubmit={(event) => onSubmit(event)}>
+    // aria-label es una propiedad de accesibilidad para los tests por ejemplo
+    <form aria-label="form" onSubmit={(event) => onSubmit(event)}>
       <input
         type="text"
         placeholder="Buscar gifs"
@@ -33,3 +33,8 @@ export const AddCategory = ({ onNewCategory }) => {
     </form>
   );
 };
+
+
+AddCategory.propTypes={
+  onNewCategory:PropTypes.func.isRequired,
+}
